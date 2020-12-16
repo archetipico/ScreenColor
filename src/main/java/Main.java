@@ -7,8 +7,8 @@ public class Main {
         try {
             Rectangle screen = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
             BufferedImage capture = new Robot().createScreenCapture(screen);
-            PixelColor pixel = new PixelColor(capture);
-            Color color = pixel.getColor();
+            ScreenColor screenCol = new ScreenColor(capture);
+            Color color = screenCol.getColor();
         } catch (AWTException e) {
             e.printStackTrace();
         }

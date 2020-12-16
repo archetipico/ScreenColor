@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class PixelColorTest {
+public class ScreenColorTest {
 
     @Test
     public void getColorTest() {
@@ -18,11 +18,11 @@ public class PixelColorTest {
             BufferedImage pic3 = ImageIO.read(new File("src/images/oranges-2500x1667.jpg"));
             BufferedImage pic4 = ImageIO.read(new File("src/images/scsi-hd-1920x1440.jpg"));
 
-            Color color0 = new PixelColor(pic0).getColor();
-            Color color1 = new PixelColor(pic1).getColor();
-            Color color2 = new PixelColor(pic2).getColor();
-            Color color3 = new PixelColor(pic3).getColor();
-            Color color4 = new PixelColor(pic4).getColor();
+            Color color0 = new ScreenColor(pic0).getColor();
+            Color color1 = new ScreenColor(pic1).getColor();
+            Color color2 = new ScreenColor(pic2).getColor();
+            Color color3 = new ScreenColor(pic3).getColor();
+            Color color4 = new ScreenColor(pic4).getColor();
 
             assertEquals(color0, new Color(75, 40, 22));
             assertEquals(color1, new Color(133, 138, 130));
