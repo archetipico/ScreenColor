@@ -31,7 +31,7 @@ public class Main {
                     frame.getContentPane().setBackground(color);
                 }
 
-                TimeUnit.SECONDS.sleep(5);
+                TimeUnit.SECONDS.sleep(1);
             }
         } catch (AWTException | InterruptedException e) {
             e.printStackTrace();

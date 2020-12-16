@@ -9,6 +9,7 @@ public class ScreenColor {
     private final int h;
     private final int area;
     private final long[] rgb;
+    private Color color;
 
     public ScreenColor(BufferedImage capture) {
         this.capture = capture;
@@ -16,6 +17,7 @@ public class ScreenColor {
         this.h = capture.getHeight();
         this.area = this.w * this.h;
         this.rgb = new long[3];
+        this.color = new Color(0, 0, 0);
     }
 
     public Color getColor() {
@@ -24,11 +26,33 @@ public class ScreenColor {
         int red = (int) (this.rgb[0] / this.area);
         int green = (int) (this.rgb[1] / this.area);
         int blue = (int) (this.rgb[2] / this.area);
-        return new Color(red, green, blue);
+        this.color = new Color(red, green, blue);
+        return this.color;
     }
 
     public ArrayList<Color> getGradient(Color from) {
-        return new ArrayList<Color>();
+        ArrayList<Color> gradient = new ArrayList<>();
+        gradient.add(from);
+
+        int redDistance = Math.abs(from.getRed() - this.color.getRed());
+        int greenDistance = Math.abs(from.getGreen() - this.color.getGreen());
+        int blueDistance = Math.abs(from.getBlue() - this.color.getBlue());
+
+        int redSteps = redDistance / 255;
+        int greenSteps = greenDistance / 255;
+        int blueSteps = blueDistance / 255;
+
+        int r = 0, g = 0, b = 0;
+        for (int i = 0; i < 255; i += 5) {
+            r = from.getRed() > this.color.getRed() ? from.getRed() - redSteps : from.getRed() + redSteps;
+            g = from.getGreen() > this.color.getGreen() ? from.getGreen() - greenSteps : from.getGreen() + greenSteps;
+            b = from.getBlue() > this.color.getBlue() ? from.getBlue() - blueSteps : from.getBlue() + blueSteps;
+            gradient.add(new Color(r, g, b));
+        }
+
+        gradient.add(this.color);
+
+        return gradient;
     }
 
     private void getTotalRGB() {
