@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ScreenColorTests {
 
@@ -29,6 +30,20 @@ public class ScreenColorTests {
             assertEquals(color2, new Color(196, 99, 133));
             assertEquals(color3, new Color(200, 106, 17));
             assertEquals(color4, new Color(90, 88, 79));
+        } catch (IOException e) {
+            fail("Image not found");
+        }
+    }
+
+    @Test
+    public void testGetGradient() {
+        try {
+            BufferedImage pic = ImageIO.read(new File("src/images/lotus-flower-1279x852.jpg"));
+
+            Color testColor = new Color(255, 255, 255);
+            ArrayList<Color> gradient = new ScreenColor(pic).getGradient(testColor);
+
+            assertTrue(gradient.contains(testColor));
         } catch (IOException e) {
             fail("Image not found");
         }

@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class ScreenColor {
 
@@ -24,6 +25,10 @@ public class ScreenColor {
         int green = (int) (this.rgb[1] / this.area);
         int blue = (int) (this.rgb[2] / this.area);
         return new Color(red, green, blue);
+    }
+
+    public ArrayList<Color> getGradient(Color from) {
+        return new ArrayList<Color>();
     }
 
     private void getTotalRGB() {
