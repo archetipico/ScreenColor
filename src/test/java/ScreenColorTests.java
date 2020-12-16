@@ -7,10 +7,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class ScreenColorTest {
+public class ScreenColorTests {
 
     @Test
-    public void getColorTest() {
+    public void testGetColor() {
         try {
             BufferedImage pic0 = ImageIO.read(new File("src/images/antelope-canyon-640x480.jpg"));
             BufferedImage pic1 = ImageIO.read(new File("src/images/french-desert-1599x1066.jpg"));
