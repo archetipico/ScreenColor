@@ -26,7 +26,6 @@ public class Main {
 
                 ArrayList<Color> gradient = screenColor.getGradient(before);
                 before = now;
-
                 for (Color color : gradient) {
                     frame.getContentPane().setBackground(color);
                 }
